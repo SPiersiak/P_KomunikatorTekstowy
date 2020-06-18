@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KomunikatorTekstowy.View.Page.UserDetailsPage"
+             xmlns:vm ="clr-namespace:KomunikatorTekstowy.ViewModel"
+             xmlns:p="clr-namespace:KomunikatorTekstowy"
+             Title="{Binding Title}">
+    <!--<ContentPage.BindingContext>
+        <vm:UserDetailViewModel/>
+    </ContentPage.BindingContext>-->
+
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <p:ImgConvert x:Key="converter"/>
+            </ResourceDictionary>
+        </ContentPage.Resources>
+        <ContentPage.ToolbarItems>
+            <ToolbarItem Text="Edit" Command="{Binding EditUserCommand}" Clicked="EditUser_Clicked" />
+            <ToolbarItem Text="Refresh" Command="{Binding RefreshUserCommand}" />
+        </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#616161">
+            <Frame
+                BackgroundColor="#616161"
+                BorderColor="White"
+                Margin="3,3,3,3">
+                <Grid TranslationX="0" TranslationY="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="{Binding ImageS, Converter={StaticResource converter} }"  
+                       Grid.Row="0"  
+                       HorizontalOptions="Center"></Image>
+                    <Label Text="{Binding Name}" 
+                       d:Text="Imie i Nazwisko" 
+                       Grid.Row="1"  
+                       HorizontalOptions="Center"
+                       TextColor="White"
+                       FontSize="Subtitle"></Label>
+                    <Label Text="{Binding NOAlbum}" 
+                       d:Text="numer albumu" 
+                       Grid.Row="2"
+                       TextColor="White"
+                       FontSize="Subtitle"
+                       HorizontalOptions="Center"></Label>
+                    <ScrollView Grid.Row="3">
+                        <Frame
+                        BackgroundColor="#616161"
+                        BorderColor="White"
+                        Margin="15,5,15,5">
+                            <Label Text="{Binding Description}" 
+                           d:Text="Opis"   
+                           HorizontalOptions="Center"
+                           TextColor="White"
+                           FontSize="Subtitle"></Label>
+                        </Frame>
+                    </ScrollView>
+                    <StackLayout 
+                    Grid.Row="4"   
+                    Orientation="Horizontal" 
+                    Padding="50,0,0,0"
+                    BackgroundColor="#616161">
+                        <Frame 
+                        CornerRadius="55" 
+                        IsClippedToBounds="True" 
+                        Padding="0"
+                        BackgroundColor="#616161"
+                        BorderColor="Blue">
+                            <Image Source="phoneImage.png" Aspect="AspectFit"/>
+                        </Frame>
+                        <Label 
+                        Text="{Binding PNumber}" 
+                        d:Text="numer Telefonu" 
+                        VerticalOptions="Center"
+                        TextColor="White"
+                        FontSize="Subtitle"></Label>
+                    </StackLayout>
+                    <StackLayout 
+                    Grid.Row="5"   
+                    Orientation="Horizontal" 
+                    Padding="50,0,0,0"
+                    BackgroundColor="#616161">
+                        <Frame 
+                        CornerRadius="50"
+                        IsClippedToBounds="True"
+                        Padding="0"
+                        BackgroundColor="#616161"
+                        BorderColor="black" >
+                            <Image Source="emailImage.png" Aspect="AspectFit"/>
+                        </Frame>
+                        <Label 
+                        Text="{Binding Email}" 
+                        d:Text="Email" 
+                        VerticalOptions="Center"
+                        TextColor="White"
+                        FontSize="Subtitle"></Label>
+                    </StackLayout>
+                    <StackLayout 
+                    Grid.Row="6"   
+                    Orientation="Horizontal" 
+                    Padding="50,0,0,0">
+                        <Frame 
+                        CornerRadius="50" 
+                        IsClippedToBounds="True" 
+                        Padding="0">
+                            <Image Source="webImage.png" Aspect="AspectFit"/>
+                        </Frame>
+                        <Label 
+                        Text="{Binding WebUrl}" 
+                        d:Text="web" 
+                        VerticalOptions="Center"
+                        TextColor="White"
+                        FontSize="Subtitle"></Label>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

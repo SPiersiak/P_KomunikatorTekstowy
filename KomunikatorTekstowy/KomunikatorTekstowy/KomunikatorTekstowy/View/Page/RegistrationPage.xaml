@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KomunikatorTekstowy.View.Page.RegistrationPage"
+             xmlns:vm ="clr-namespace:KomunikatorTekstowy.ViewModel"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <vm:RegistrationViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid BackgroundColor="#616161">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--Tu powinien zostac dodany banner-->
+            <Image Source="regLog.png" 
+                   Grid.Row="0" 
+                   Grid.ColumnSpan="2"
+                   WidthRequest="200"
+                   HeightRequest="200"></Image>
+            <ScrollView  Grid.Row = "1" Grid.ColumnSpan="2">
+                    <StackLayout>
+                        <Label 
+                            Text="Login Name"
+                            Margin="55,0"
+                            TextColor="White"
+                            FontSize="Subtitle"></Label>
+                    <Frame Margin="20,0,20,0" CornerRadius="130" BackgroundColor="#FF8F00">
+                        <Entry Text="{Binding LoginName}" 
+                               Placeholder="Insert your Login"
+                               TextColor="White"
+                               PlaceholderColor="White"
+                               HeightRequest="39"></Entry>
+                    </Frame>
+                    <Label 
+                        Text="Password"
+                        Margin="55,0"
+                        TextColor="White"
+                        FontSize="Subtitle"></Label>
+                    <Frame Margin="20,0,20,0" CornerRadius="130" BackgroundColor="#FF8F00">
+                        <Entry Text="{Binding Password}" 
+                               IsPassword="True" 
+                               Placeholder="Insert your Password"
+                               TextColor="White"
+                               PlaceholderColor="White"
+                               HeightRequest="39"></Entry>
+                    </Frame>
+                    <Label 
+                        Text="First Name"
+                        Margin="55,0"
+                        TextColor="White"
+                        FontSize="Subtitle"></Label>
+                    <Frame Margin="20,0,20,0" CornerRadius="130" BackgroundColor="#FF8F00">
+                        <Entry Text="{Binding FirstName}" 
+                               Placeholder="Insert your First Name"
+                               TextColor="White"
+                               PlaceholderColor="White"
+                               HeightRequest="39"></Entry>
+                    </Frame>
+                    <Label 
+                            Text="Last Name"
+                            Margin="55,0"
+                            TextColor="White"
+                        FontSize="Subtitle"></Label>
+                    <Frame Margin="20,0,20,0" CornerRadius="130" BackgroundColor="#FF8F00">
+                        <Entry Text="{Binding LastName}" 
+                               Placeholder="Insert your Last Name"
+                               TextColor="White"
+                               PlaceholderColor="White"
+                               HeightRequest="39"></Entry>
+                    </Frame>
+                    <Label 
+                            Text="Email"
+                            Margin="55,0"
+                            TextColor="White"
+                            FontSize="Subtitle"></Label>
+                    <Frame Margin="20,0,20,0" CornerRadius="130" BackgroundColor="#FF8F00">
+                        <Entry Text="{Binding Email}" 
+                               Placeholder="Insert your Email"
+                               TextColor="White"
+                               PlaceholderColor="White"
+                               HeightRequest="39"></Entry>
+                    </Frame>
+                    <Label 
+                            Text="Number Of Album"
+                            Margin="55,0"
+                            TextColor="White"
+                            FontSize="Subtitle"></Label>
+                    <Frame Margin="20,0,20,0" CornerRadius="130" BackgroundColor="#FF8F00">
+                        <Entry Text="{Binding NumberOfAlbum}" 
+                               Placeholder="Insert your Number of album"
+                               TextColor="White"
+                               PlaceholderColor="White"
+                               HeightRequest="39"></Entry>
+                    </Frame>
+                    <Label 
+                        Text="Description"
+                        Margin="55,0"
+                        TextColor="White"
+                        FontSize="Subtitle"></Label>
+                    <Frame Margin="20,0,20,0" CornerRadius="130" BackgroundColor="#FF8F00">
+                        <Entry Text="{Binding Description}" 
+                               Placeholder="Write something about you"
+                               TextColor="White"
+                               PlaceholderColor="White"
+                               HeightRequest="39"></Entry>
+                    </Frame>
+                    <Label 
+                            Text="Phone Number"
+                            Margin="55,0"
+                            TextColor="White"
+                            FontSize="Subtitle"></Label>
+                    <Frame Margin="20,0,20,0" CornerRadius="130" BackgroundColor="#FF8F00">
+                        <Entry Text="{Binding PhoneNumber}" 
+                               Placeholder="Insert your Phone Number"
+                               TextColor="White"
+                               PlaceholderColor="White"
+                               HeightRequest="39"></Entry>
+                    </Frame>
+                    <Label 
+                            Text="LinkedIn"
+                            Margin="55,0"
+                            TextColor="White"
+                            FontSize="Subtitle"></Label>
+                    <Frame Margin="20,0,20,0" CornerRadius="130" BackgroundColor="#FF8F00">
+                        <Entry Text="{Binding WebLink}" 
+                               Placeholder="Add your link to LinkedIn website"
+                               TextColor="White"
+                               PlaceholderColor="White"
+                               HeightRequest="39"></Entry>
+                    </Frame>
+                        <Label 
+                            Text="Image"
+                            Margin="55,0"
+                            TextColor="White"
+                            FontSize="Subtitle"></Label>
+                        <Image Source="{Binding ImageSource}"/>
+                        <Button 
+                            Text="Add photo" 
+                            Command="{Binding AddPhotoCommand}"
+                            BackgroundColor="#FF8F00" 
+                            CornerRadius="35"
+                            TextColor="white" 
+                            FontSize="Subtitle"></Button>
+                        <!--tu powinno nastapic dodanie zdjecia lub ustawienie jakiegos domyslnego-->
+                    </StackLayout>
+                </ScrollView>
+
+            <Button 
+                Text="Cancel"
+                Grid.Row = "2" 
+                Grid.Column ="0"
+                Clicked="Cancel_Clicked"
+                BackgroundColor="#FF8F00" 
+                CornerRadius="35"
+                TextColor="white" 
+                FontSize="Subtitle"
+                Margin="10,0,0,5"></Button>
+            <Button 
+                Text="Register" 
+                Grid.Row = "2" 
+                Grid.Column="1" 
+                Command="{Binding RegisterCommand}"
+                BackgroundColor="#FF8F00" 
+                CornerRadius="35"
+                TextColor="white" 
+                FontSize="Subtitle"
+                Margin="0,0,10,5"></Button>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

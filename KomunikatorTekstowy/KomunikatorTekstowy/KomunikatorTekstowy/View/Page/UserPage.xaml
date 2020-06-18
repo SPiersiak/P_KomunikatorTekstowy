@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KomunikatorTekstowy.View.Page.UserPage"
+             xmlns:vm="clr-namespace:KomunikatorTekstowy.ViewModel"
+             xmlns:p="clr-namespace:KomunikatorTekstowy"
+             Title="{Binding Title}">
+    <!--<ContentPage.BindingContext>
+        <vm:UserViewModel/>
+    </ContentPage.BindingContext>-->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <p:ImgConvert x:Key="converter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid BackgroundColor="#616161">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--Tu powinien zostac dodany banner-->
+            <Image Source="{Binding User.Photo, Converter={StaticResource converter} }" Grid.Row="0" Grid.ColumnSpan="3"></Image> 
+            <StackLayout 
+                Grid.Row ="1"
+                Grid.ColumnSpan="3" 
+                HorizontalOptions="Center" 
+                Orientation="Horizontal"
+                Margin="0,20,0,0">
+                <Label 
+                    Text="{Binding User.FirstName}" 
+                    d:Text="imie"
+                    TextColor="White"
+                    FontSize="Subtitle"></Label>
+                <Label 
+                    Text="{Binding User.LastName}"
+                    d:Text="nazwisko"
+                    TextColor="White"
+                    FontSize="Subtitle"></Label>
+                <Label 
+                    Text="{Binding User.NumberOfAlbum}"
+                    d:Text="numer ablumu"
+                    TextColor="White"
+                    FontSize="Subtitle"></Label>
+            </StackLayout>
+            <ScrollView 
+                Grid.Row="2"
+                Grid.ColumnSpan="3"
+                HorizontalOptions="Center">
+                <Label 
+                    Text="{Binding User.Description}"
+                    d:Text="opis"
+                    TextColor="White"
+                    FontSize="Subtitle"
+                    Margin="15,0,15,0"/>
+            </ScrollView>
+            <Button 
+                Text="Mail" 
+                Command="{Binding SendEmailCommand}" 
+                Grid.Row="3" 
+                Grid.Column="0" 
+                ImageSource="email.png">
+            </Button>
+            <Button 
+                Text="SMS" 
+                Command="{Binding SendSmsCommand}" 
+                Grid.Row="3" 
+                Grid.Column="1"
+                ImageSource="smartphone.png">
+                
+            </Button>
+            <Button 
+                Text="Web" 
+                Command="{Binding OpenWebsiteCommand}" 
+                Grid.Row="3" 
+                Grid.Column="2"
+                ImageSource="web.png"></Button>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

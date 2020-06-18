@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KomunikatorTekstowy.View.Page.UserListPage"
+             xmlns:p="clr-namespace:KomunikatorTekstowy"
+             Title="{Binding Title}">
+        <ContentPage.Resources>
+        <ResourceDictionary>
+            <p:ImgConvert x:Key="converter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
+        <CollectionView x:Name="UsersColectionView" ItemsSource="{Binding Users}">
+            <d:CollectionView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>First User</x:String>
+                    <x:String>Second User</x:String>
+                    <x:String>Third User</x:String>
+                    <x:String>Fifth User</x:String>
+                </x:Array>
+            </d:CollectionView.ItemsSource>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <ScrollView>
+                    <StackLayout Orientation="Horizontal" 
+                                 BackgroundColor="#616161" 
+                                 VerticalOptions="FillAndExpand">
+                        <Frame
+                            BackgroundColor="#FF8F00"
+                            BorderColor="White"
+                            Margin="15,5,15,5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Orientation="Horizontal" Grid.Column="0">
+                                    <Label Text="{Binding FirstName}"
+                                   d:Text="{Binding .}"
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="13"
+                                   VerticalOptions="Center"/>
+                                    <Label Text="{Binding LastName}"
+                                   d:Text="{Binding .}"
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="13"
+                                   VerticalOptions="Center"/>
+                                </StackLayout>
+                                    <StackLayout Grid.Column="1" HorizontalOptions="Center"  BackgroundColor="#FF8F00">
+                                        <Frame CornerRadius="5" IsClippedToBounds="True" Padding="0">
+                                        <Image Source="{Binding Photo, Converter={StaticResource converter} }" 
+                                       HeightRequest="50" 
+                                       WidthRequest="50"
+                                        Aspect="AspectFill"/>
+                                    </Frame>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnItemSelected"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    </ScrollView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>
